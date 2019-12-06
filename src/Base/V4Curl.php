@@ -32,7 +32,13 @@ abstract class V4Curl extends BaseCurl
                 $v4 = new SignatureV4();
                 $credentials = $options['v4_credentials'];
                 if (!isset($credentials['ak']) || !isset($credentials['sk'])) {
-                    $json = json_decode(file_get_contents(getenv('HOME') . '/.ksyun/config'), true);
+                    // $json = json_decode(file_get_contents(getenv('HOME') . '/.ksyun/config'), true);
+                    if (!defined('KSYUN_CONFIG_DIR')) {
+                        error_log(sprintf("Please define KSYUN_CONFIG_DIR const!"));
+                        exit();
+                    }
+                    $configFile = KSYUN_CONFIG_DIR . '/config.php';
+                    $json = json_decode(file_get_contents($configFile), true);
                     if (is_array($json) && isset($json['ak']) && isset($json['sk'])) {
                         $credentials = array_merge($credentials, $json);
                     }
