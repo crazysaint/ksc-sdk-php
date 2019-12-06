@@ -1,14 +1,20 @@
-##使用方式
-####composer引用
+## 使用方式
+#### composer引用
 ```
 composer require kscsdk/ksyun_sdk
 ```
-####ak|sk配置
+#### ak|sk配置
 >获取到用户的aksk后配置在文件
 ```
 ~\.ksyun\config
 ```
-####config文件结构
+>增加配置文件路径定义
+```php
+// 配置文件路径 
+define('KSYUN_CONFIG_DIR', '');
+$configFile = KSYUN_CONFIG_DIR . '/config';
+```
+#### config文件结构
 ```
 {
     "ak":"your ak",
@@ -16,7 +22,7 @@ composer require kscsdk/ksyun_sdk
 }
 ```
 
-##功能列表
+## 功能列表
 - [IAM](https://docs.ksyun.com/documents/1376)
 - [KEC](https://docs.ksyun.com/documents/695)
 - [EIP](https://docs.ksyun.com/documents/670)
@@ -28,7 +34,7 @@ composer require kscsdk/ksyun_sdk
 
 >敬请期待
 
-##推荐demo
+## 推荐demo
 ```
 <?php
 require('./vendor/autoload.php');
